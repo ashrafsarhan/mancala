@@ -25,7 +25,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/mancala").withSockJS();
+        registry.addEndpoint("/gs-guide-websocket").withSockJS();
     }
 
 }
