@@ -29,60 +29,43 @@
 			</div>
 		</div>
 		</form>
-		<div class="row">
-			<div class="col-md-12">
-				<table id="game" class="table table-striped">
-					<thead>
-						<tr>
-							<th>Mancala Game</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th class="text-center">Player.1</th>
-						</tr>
-						<tr>
-							<th>
-								<div class="btn-group btn-group-lg">
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-								</div>
-							</th>
-						</tr>
-						<tr>
-							<th> 
-							<button type="button" class="pull-left btn btn-danger">0</button>
-							<button type="button" class="pull-right btn btn-danger">0</button>
-							</th>
-						</tr>
-						<tr>
-							<th>
-								<div class="btn-group btn-group-lg">
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-									<button type="button" class="btn btn-primary">6</button>
-								</div>
-							</th>
-						</tr>
-						<tr>
-							<th class="text-center">Player.2</th>
-						</tr>
-					</tbody>
-				</table>
+		<div class="row row-centered">
+			<div class="col-sm-1 col-centered">
+			    <span>Player.1</span>
+				<span class="btn btn-default btn-circle">0</span>
+			</div>
+			<div class="col-sm-3 col-centered">
+			 <div class="row row-centered">
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary">6</button>
+					<button type="button" class="btn btn-primary">6</button>
+					<button type="button" class="btn btn-primary">6</button>
+					<button type="button" class="btn btn-primary">6</button>
+					<button type="button" class="btn btn-primary">6</button>
+					<button type="button" class="btn btn-primary">6</button>
+				</div>
+             </div>
+             <div class="row row-centered">
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger">6</button>
+					<button type="button" class="btn btn-danger">6</button>
+					<button type="button" class="btn btn-danger">6</button>
+					<button type="button" class="btn btn-danger">6</button>
+					<button type="button" class="btn btn-danger">6</button>
+					<button type="button" class="btn btn-danger">6</button>
+				</div>
+			 </div>
+			</div>
+			<div class="col-sm-1 col-centered">
+			    <span>Player.2</span>
+			    <span class="btn btn-default btn-circle">0</span>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
 				<form class="form-inline">
 					<div class="form-group">
-						<label for="name">Chat:</label> <input type="text" id="name"
+						<label for="name">Chat:</label> <input type="text" id="content"
 							class="form-control" placeholder="Your message here...">
 					</div>
 					<button id="send" class="btn btn-default" type="submit">Send</button>
@@ -95,7 +78,7 @@
 							<th>Messages</th>
 						</tr>
 					</thead>
-					<tbody id="greetings">
+					<tbody id="messages">
 					</tbody>
 				</table>
 			</div>

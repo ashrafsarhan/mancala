@@ -12,14 +12,14 @@ import org.springframework.stereotype.Controller;
  *
  */
 @Controller
-public class GreetingController {
+public class GameController {
 
 
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
-    public Greeting greeting(HelloMessage message) throws Exception {
+    @MessageMapping("/chat")
+    @SendTo("/topic/messages")
+    public Message greeting(Message message) throws Exception {
         Thread.sleep(1000); // simulated delay
-        return new Greeting(message.getName());
+        return new Message(message.getContent());
     }
 
 }
