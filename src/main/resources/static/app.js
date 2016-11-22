@@ -18,8 +18,11 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/messages', function (greeting) {
-        	showMessage(JSON.parse(greeting.body).content);
+        stompClient.subscribe('/topic/messages', function (message) {
+        	showMessage(JSON.parse(message.body).content);
+        });
+        stompClient.subscribe('/topic/game', function (message) {
+        	drawGameBoard(JSON.parse(message.body));
         });
     });
 }
@@ -32,12 +35,29 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function sendName() {
+function start() {
+    stompClient.send("/app/start", {}, {});
+}
+
+function sendMessage() {
     stompClient.send("/app/chat", {}, JSON.stringify({'content': $("#content").val()}));
+}
+
+function move(pileId) {
+    stompClient.send("/app/move", {}, pileId);
 }
 
 function showMessage(message) {
     $("#messages").append("<tr><td>" + message + "</td></tr>");
+}
+
+function drawGameBoard(message) {
+    $("#gameStatus").text(message.gameStatus);
+    $("#winner").text(message.winner);
+    piles = message.piles;
+    for (i=0; i<14; i++) {
+    	$("#"+i).text(piles[i]);
+    }
 }
 
 $(function () {
@@ -46,5 +66,6 @@ $(function () {
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#send" ).click(function() { sendName(); });
+    $( "#send" ).click(function() { sendMessage(); });
+    $( "#start" ).click(function() { start(); });
 });
