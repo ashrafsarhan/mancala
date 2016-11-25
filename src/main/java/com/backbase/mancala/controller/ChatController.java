@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.backbase.mancala.controller;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;

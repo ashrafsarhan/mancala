@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.backbase.mancala.controller;
 
 import java.util.ArrayList;
@@ -11,7 +8,6 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
-import com.backbase.mancala.domain.Pile;
 import com.backbase.mancala.dto.GameBoard;
 import com.backbase.mancala.service.MancalaGame;
 
