@@ -21,6 +21,7 @@ function connect() {
         stompClient.subscribe('/topic/messages', function (message) {
         	showMessage(JSON.parse(message.body).content);
         });
+        //TODO It should subscribe with game id for multiple games
         stompClient.subscribe('/topic/game', function (message) {
         	drawGameBoard(JSON.parse(message.body));
         });

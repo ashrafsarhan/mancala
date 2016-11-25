@@ -20,3 +20,7 @@
   line-height: 1.42;
   border-radius: 15px;
 }
+
+.custom {
+    width: 45px !important;
+}
