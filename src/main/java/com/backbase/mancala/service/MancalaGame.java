@@ -70,13 +70,13 @@ public class MancalaGame {
 				counter += piles.get(i).getNumPebbles();
 				piles.get(i).setNumPebbles(0);
 			}
-			piles.get(13).setNumPebbles(counter);
+			piles.get(13).setNumPebbles(piles.get(13).getNumPebbles()+counter);
 		} else if(isTopSideEmpty()){
 			for (int i = 0; i < 6; i++) {
 				counter += piles.get(i).getNumPebbles();
 				piles.get(i).setNumPebbles(0);
 			}
-			piles.get(6).setNumPebbles(counter);
+			piles.get(6).setNumPebbles(piles.get(6).getNumPebbles()+counter);
 		}
 	}
 
