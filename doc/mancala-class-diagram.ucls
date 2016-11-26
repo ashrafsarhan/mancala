@@ -22,8 +22,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="com.backbase.mancala.controller.Message" project="mancala" 
-    file="/mancala/src/main/java/com/backbase/mancala/controller/Message.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="com.backbase.mancala.dto.Message" project="mancala" 
+    file="/mancala/src/main/java/com/backbase/mancala/dto/Message.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="332" y="83"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

@@ -1,4 +1,4 @@
-package com.backbase.mancala.controller;
+package com.backbase.mancala.dto;
 
 /**
  * The Class Message.
