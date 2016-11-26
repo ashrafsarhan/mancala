@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.backbase.mancala.domain.Pile;
 import com.backbase.mancala.dto.GameBoard;
+import com.backbase.mancala.dto.GameStatus;
+import com.backbase.mancala.dto.Winner;
 
 /**
  * The Class MancalaGame.
@@ -36,7 +38,12 @@ public class MancalaGame implements IBoardGame {
 	 */
 	@Override
 	public boolean isGameOver() {
-		return isSideEmpty();
+		if (isSideEmpty()) {
+			gameStatus = GameStatus.GAME_OVER.getGameStatus();
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	@Override
@@ -184,10 +191,10 @@ public class MancalaGame implements IBoardGame {
 			if (isLandedMancala == false) {
 				if (player1 == true) {
 					player1 = false;
-					gameStatus = "Player 2's Turn!";
+					gameStatus = GameStatus.P2_Turn.getGameStatus();
 				} else {
 					player1 = true;
-					gameStatus = "Player 1's Turn!";
+					gameStatus = GameStatus.P1_Turn.getGameStatus();
 				}
 			}
 		}
@@ -269,7 +276,7 @@ public class MancalaGame implements IBoardGame {
 		piles.get(13).toggleMancala(); // this pile becomes a mancala
 		isLandedMancala = false;
 		player1 = true; // reset to player1's turn
-		gameStatus = "Player 1's Turn!";
+		gameStatus = GameStatus.P1_Turn.getGameStatus();
 		winner = "";
 	}
 
@@ -277,13 +284,12 @@ public class MancalaGame implements IBoardGame {
 	public void determineWinner() {
 		Integer player1Mancala = piles.get(6).getNumPebbles();
 		Integer player2Mancala = piles.get(13).getNumPebbles();
-		gameStatus = "Game is Over!";
 		if (player1Mancala > player2Mancala) {
-			winner = "Player 1 won!";
+			winner = Winner.P1.getWinner();
 		} else if (player1Mancala == player2Mancala) {
-			winner = "It is a tie!";
+			winner = Winner.TIE.getWinner();
 		} else {
-			winner = "Player 2 won!";
+			winner = Winner.P2.getWinner();
 		}
 	}
 
