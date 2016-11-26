@@ -46,19 +46,45 @@ For more information about Mancala board game <https://en.wikipedia.org/wiki/Kal
 * src/main/test
     + com.backbase.mancala
         + MancalaApplicationTests.java
-        
+
 ##3. Project Class Diagram
+Mancala class diagram describes the structure of a system by showing the system's classes, their attributes, operations (or methods), and the relationships among objects.
 
-```{r cars}
-summary(cars)
+![Mancala Class Diagram](/home/ashraf/workspace-sts/mancala/doc/mancala-class-diagram.png)
+
+##4. Project Architecture
+Mancala web game application architecture depends mainly on the messaging architecture using STOMP (Websockt Sub Protcol), Websockt provides full-duplex, two-way communication between client and server. <http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html>
+
+![Mancala Application Architecture](/home/ashraf/workspace-sts/mancala/doc/mancala_architecture.png)
+
+The following explains the message flow for the above architecture:
+
+* WebSocket clients connect to the WebSocket endpoint at "/websocket".
+* Subscriptions to "/topic/game" pass through the "clientInboundChannel" and are forwarded to the broker.
+* Messages sent to "/app/start" and "/app/move" pass through the "clientInboundChannel" then forwarded to the GameController.
+* The GameController iniate a new game or make a move and return GameBoard through the "brokerChannel" as a message to "/topic/game" (destination is selected based on a convention but can be overridden via @SendTo).
+* The broker in turn broadcasts messages to subscribers, and they pass through the "clientOutboundChannel". 
+
+Also, there's a chat feature which is working according to the same flow.
+
+##5. Project Testing/Running
+There are some Junit cases to test the game functionalities, which are running during the project build phase. After building the project, go to the target dir and you will find an excutable deployable fat jar (mancala-game.jar) for the game which contains an embbeded tomcat application server.
+
+To build the project, run the following mvn command:
+
+```
+mnv clean install
 ```
 
-## Including Plots
+##6. Future Enhancement
+Actully, I did my best to build this beta version but still there are many enhancements (TODOs) to improve The current beta version and the followings are examples:
 
-You can also embed plots, for example:
+* We are using on a simple in-memory broker, we can StompBrokerRely with a dedicated message broker like ActiveMQ.
+* The application can't handel more than one game but it's doable through a kind session managment mechanism.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+Also, you can get a pull request or submit issues through project Git repository <https://github.com/ashrafsarhan/mancala>.
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+##7. References
+Spring WebSocket Support 
+<http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html>
+
