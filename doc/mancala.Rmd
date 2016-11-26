@@ -9,9 +9,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
-Through this article, I am going to explian the technology stack which I used to create Mancala web game, I will explore some code snippts and the internal system archtict. Also, you will find a demo vedio about how you can play.
+Through this article, I am going to explian the technology stack which I used to create Mancala web game, I will explore some code snippts and the internal system archtict. Also, you will find a demo vedio about how you can play in the docs dir.
 
-For more information about Mancala board game <https://en.wikipedia.org/wiki/Kalah>.
+For more information about Mancala board game, visit <https://en.wikipedia.org/wiki/Kalah>.
 
 ##1. Project Environment
 * Spring Tool Suite 3.8.2.RELEASE
@@ -53,7 +53,7 @@ Mancala class diagram describes the structure of a system by showing the system'
 ![Mancala Class Diagram](/home/ashraf/workspace-sts/mancala/doc/mancala-class-diagram.png)
 
 ##4. Project Architecture
-Mancala web game application architecture depends mainly on the messaging architecture using STOMP (Websockt Sub Protcol), Websockt provides full-duplex, two-way communication between client and server. <http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html>
+Mancala web game application architecture depends mainly on the messaging architecture using STOMP (Websockt Sub Protcol), Websockt provides full-duplex, two-way communication between client and server^[1]^.
 
 ![Mancala Application Architecture](/home/ashraf/workspace-sts/mancala/doc/mancala_architecture.png)
 
@@ -85,6 +85,6 @@ Actully, I did my best to build this beta version but still there are many enhan
 Also, you can get a pull request or submit issues through project Git repository <https://github.com/ashrafsarhan/mancala>.
 
 ##7. References
-Spring WebSocket Support 
+[1] Spring WebSocket Support 
 <http://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html>
 
