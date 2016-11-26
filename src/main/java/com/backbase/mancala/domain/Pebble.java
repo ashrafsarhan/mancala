@@ -9,58 +9,51 @@ package com.backbase.mancala.domain;
  * @author ashraf
  */
 public class Pebble {
-    /**
-        Description of instance variables:
- last: boolean used to mark the last pebble in the stack
-       This will help to determine when a turn ends.
+	/**
+	 * Description of instance variables: last: boolean used to mark the last
+	 * pebble in the stack This will help to determine when a turn ends.
+	 * 
+	 */
+	private boolean last;
 
-    */
+	/**
+	 * Pebble Constructor.
+	 */
+	public Pebble() {
+		last = false;
+	}
 
-    //private String color;
-    private boolean last;
+	/**
+	 * Checks the status of last boolean, and switches it to true if false and
+	 * false if true.
+	 */
+	public void toggleLastTrue() {
+		last = true;
+	}
 
-    /**
-       Pebble Constructor
-    */
-    public Pebble() {
- last=false;
-    }
+	/**
+	 * Toggle last false.
+	 */
+	public void toggleLastFalse() {
+		last = false;
+	}
 
-    /**
-       Checks the status of last boolean, and switches it to true
-       if false and false if true
-    */
-    public void toggleLastTrue() {
-      last=true;
-    }
-    
-    public void toggleLastFalse() {
-      last=false;      
-    }
+	/**
+	 * Checks whether the last pebble landed in a mancala.
+	 *
+	 * @return true, if is landed mancala
+	 */
+	public boolean isLandedMancala() {
+		return false;
+	}
 
-    /**
-       Checks whether the last pebble landed in a mancala
-    */
-    public boolean isLandedMancala() {
-return false;
-    }
-
-    public boolean isLast(){
-      return last;
-    }
-    /**
-       toString method that returns the state of the last boolean
-    */
-    public String toString() {
- return "0 "+last;
-    }
-
-    /**
-       Main method, contains code to test the Pebble methods
-    */
-    public static void main(String[] args) {
- Pebble bluh = new Pebble();
- System.out.println(bluh);
-    }
+	/**
+	 * Checks if is last.
+	 *
+	 * @return true, if is last
+	 */
+	public boolean isLast() {
+		return last;
+	}
 
 }
