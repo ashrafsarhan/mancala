@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.backbase.mancala;
 
 import org.springframework.context.annotation.Configuration;

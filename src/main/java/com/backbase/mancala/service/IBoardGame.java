@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.backbase.mancala.service;
 
 import com.backbase.mancala.dto.GameBoard;
