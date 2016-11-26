@@ -5,7 +5,7 @@
   <class id="1" language="java" name="com.backbase.mancala.controller.ChatController" project="mancala" 
     file="/mancala/src/main/java/com/backbase/mancala/controller/ChatController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="127" y="194"/>    
+    <position height="-1" width="-1" x="327" y="66"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -24,7 +24,7 @@
   </class>  
   <class id="3" language="java" name="com.backbase.mancala.dto.Message" project="mancala" 
     file="/mancala/src/main/java/com/backbase/mancala/dto/Message.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="332" y="83"/>    
+    <position height="-1" width="-1" x="139" y="188"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -33,7 +33,7 @@
   </class>  
   <class id="4" language="java" name="com.backbase.mancala.service.MancalaGame" project="mancala" 
     file="/mancala/src/main/java/com/backbase/mancala/service/MancalaGame.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="549" y="584"/>    
+    <position height="-1" width="-1" x="558" y="574"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -42,8 +42,8 @@
   </class>  
   <class id="5" language="java" name="com.backbase.mancala.dto.GameBoard" project="mancala" 
     file="/mancala/src/main/java/com/backbase/mancala/dto/GameBoard.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="804" y="250"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="242" width="218" x="714" y="79"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -51,7 +51,7 @@
   </class>  
   <class id="6" language="java" name="com.backbase.mancala.domain.Pebble" project="mancala" 
     file="/mancala/src/main/java/com/backbase/mancala/domain/Pebble.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="116" y="931"/>    
+    <position height="-1" width="-1" x="808" y="796"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -60,57 +60,74 @@
   </class>  
   <class id="7" language="java" name="com.backbase.mancala.domain.Pile" project="mancala" 
     file="/mancala/src/main/java/com/backbase/mancala/domain/Pile.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="319" y="704"/>    
+    <position height="-1" width="-1" x="803" y="505"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="8">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="9" name="mancalaGame">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="10" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="11">    
-    <end type="SOURCE" refId="2"/>    
+  <interface id="8" language="java" name="com.backbase.mancala.service.IBoardGame" project="mancala" 
+    file="/mancala/src/main/java/com/backbase/mancala/service/IBoardGame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="550" y="255"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <dependency id="9">    
+    <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
+  <realization id="10">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <dependency id="11">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
   <association id="12">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="13" name="pebbles">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="13" name="piles">        
+        <position height="0" width="0" x="484" y="-199"/>      
       </attribute>      
       <multiplicity id="14" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="15">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="16" name="piles">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="17" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="484" y="-199"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="18">    
+  <dependency id="15">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="16">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
+  <association id="17">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="18" name="mancalaGame"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="21" name="pebbles">        
+        <position height="0" width="0" x="692" y="-135"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="692" y="-135"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

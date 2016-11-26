@@ -20,11 +20,34 @@ For more information about Mancala board game <https://en.wikipedia.org/wiki/Kal
 * WebSocket (STOMP)
 
 ##2. Project Package Structure
-* com.backbase.mancala
-* Item 2
-    + Item 2a
-    + Item 2b
-
+* src/main/java
+    + com.backbase.mancala
+        + MancalaApplication.java
+        + MancalaApplication.java
+    + com.backbase.mancala.controller
+        + ChatController.java
+        + GameController.java
+    + com.backbase.mancala.domain
+        + Pebble.java
+        + Pile.java
+    + com.backbase.mancala.dto
+        + GameBoard.java
+        + GameStatus.java (Enum)
+        + Message.java 
+        + Winner.java (Enum)
+    + com.backbase.mancala.service
+        + IBoardGame.java
+        + MancalaGame.java
+* src/main/resource
+    + static
+        + app.js
+        + index.html
+        + main.css
+* src/main/test
+    + com.backbase.mancala
+        + MancalaApplicationTests.java
+        
+##3. Project Class Diagram
 
 ```{r cars}
 summary(cars)
