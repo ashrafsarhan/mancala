@@ -1,0 +1,41 @@
+---
+title: "Mancala Board Game"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+Through this article, I am going to explian the technology stack which I used to create Mancala web game, I will explore some code snippts and the internal system archtict. Also, you will find a demo vedio about how you can play.
+
+For more information about Mancala board game <https://en.wikipedia.org/wiki/Kalah>.
+
+##1. Project Environment
+* Spring Tool Suite 3.8.2.RELEASE
+* JDK 1.8
+* Apache Maven 3.3.9
+* WebSocket (STOMP)
+
+##2. Project Package Structure
+* com.backbase.mancala
+* Item 2
+    + Item 2a
+    + Item 2b
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
