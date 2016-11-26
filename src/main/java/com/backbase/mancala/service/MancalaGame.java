@@ -55,7 +55,7 @@ public class MancalaGame {
 	public boolean isSideEmpty() {
 		// one of two cases needs to be true:
 		// either 0-5 are empty or 7-12 are empty
-		if (isBottomSideEmpty() || isTopSideEmpty()) {
+		if (isTopSideEmpty() || isBottomSideEmpty()) {
 			moveAllPebblesToMancala();
 			return true;
 		} else {
@@ -65,27 +65,27 @@ public class MancalaGame {
 	
 	public void moveAllPebblesToMancala() {
 		int counter = 0;
-		if (isBottomSideEmpty()) {
-			for (int i = 7; i < 13; i++) {
-				counter += piles.get(i).getNumPebbles();
-				piles.get(i).setNumPebbles(0);
-			}
-			piles.get(13).setNumPebbles(piles.get(13).getNumPebbles()+counter);
-		} else if(isTopSideEmpty()){
+		 if(isTopSideEmpty()){
 			for (int i = 0; i < 6; i++) {
 				counter += piles.get(i).getNumPebbles();
 				piles.get(i).setNumPebbles(0);
 			}
 			piles.get(6).setNumPebbles(piles.get(6).getNumPebbles()+counter);
+		}else if (isBottomSideEmpty()) {
+			for (int i = 7; i < 13; i++) {
+				counter += piles.get(i).getNumPebbles();
+				piles.get(i).setNumPebbles(0);
+			}
+			piles.get(13).setNumPebbles(piles.get(13).getNumPebbles()+counter);
 		}
 	}
 
 	/**
 	 * checks if piles 0-5 are empty.
 	 *
-	 * @return true, if is bottom side empty
+	 * @return true, if is top side empty
 	 */
-	public boolean isBottomSideEmpty() {
+	public boolean isTopSideEmpty() {
 		int counter = 0;
 		for (int i = 0; i < 6; i++) {
 			if (piles.get(i).isEmpty()) {
@@ -98,9 +98,9 @@ public class MancalaGame {
 	/**
 	 * checks if piles 7-12 are empty.
 	 *
-	 * @return true, if is top side empty
+	 * @return true, if is bottom side empty
 	 */
-	public boolean isTopSideEmpty() {
+	public boolean isBottomSideEmpty() {
 		int counter = 0;
 		for (int i = 7; i < 13; i++) {
 			if (piles.get(i).isEmpty()) {
