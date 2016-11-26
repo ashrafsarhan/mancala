@@ -10,64 +10,52 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.backbase.mancala.domain.Pile;
-import com.backbase.mancala.service.MancalaGame;
+import com.backbase.mancala.dto.GameBoard;
+import com.backbase.mancala.service.IBoardGame;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MancalaApplicationTests {
 	
 	@Autowired
-	private MancalaGame mancalaGame;
+	private IBoardGame mancalaGame;
 
 	@Test
 	public void testStartNewGame() {
 		
 		mancalaGame.startNewGame();
 		
-		List<Pile> piles = mancalaGame.getPiles();
+		GameBoard gameBoard = mancalaGame.getCurrentGameBoard();
+				
+		List<Integer> piles = gameBoard.getPiles();
 		
 		Assert.assertEquals(14, piles.size());
 		
 		Assert.assertEquals("Error in piles size!", 14, piles.size());
 		
 		for(int i=0; i<6; i++)
-			Assert.assertEquals("Error in the first player pebbles size!", 6, piles.get(i).getNumPebbles());
+			Assert.assertEquals("Error in the first player pebbles size!", Integer.valueOf(6), piles.get(i));
 		
 		for(int i=7; i<13; i++)
-			Assert.assertEquals("Error in the second player pebbles size!", 6, piles.get(i).getNumPebbles());
+			Assert.assertEquals("Error in the second player pebbles size!", Integer.valueOf(6), piles.get(i));
 		
-		Assert.assertEquals("Error in the first player mancala!", 0, piles.get(6).getNumPebbles());
+		Assert.assertEquals("Error in the first player mancala!", Integer.valueOf(0), piles.get(6));
 		
-		Assert.assertEquals("Error in the second player mancala!", 0, piles.get(13).getNumPebbles());
+		Assert.assertEquals("Error in the second player mancala!", Integer.valueOf(0), piles.get(13));
 	}
 	
 	@Test
 	public void testMakeSingleMove() {
 		
 		mancalaGame.startNewGame();
-		
-		List<Pile> piles = mancalaGame.getPiles();
-		
 		mancalaGame.makeSingleMove(0);
+		GameBoard gameBoard = mancalaGame.getCurrentGameBoard();
+		List<Integer> piles = gameBoard.getPiles();
 		
 		for(int i=1; i<6; i++)
-			Assert.assertEquals("Error in the first player pebbles size!", 7, piles.get(i).getNumPebbles());
+			Assert.assertEquals("Error in the first player pebbles size!", Integer.valueOf(7), piles.get(i));
 		
-		Assert.assertEquals("Error in the first player mancala!", 1, piles.get(6).getNumPebbles());
-		
-	}
-	
-	@Test
-	public void testIsGameOver() {
-		
-		mancalaGame.startNewGame();
-		
-		List<Pile> piles = mancalaGame.getPiles();
-		
-		for(int i=0; i<6; i++)
-			piles.get(i).clearPile();
-		
-		Assert.assertEquals("Error in isGameOver!", true, mancalaGame.isGameOver());
+		Assert.assertEquals("Error in the first player mancala!", Integer.valueOf(1), piles.get(6));
 		
 	}
 	
@@ -78,12 +66,13 @@ public class MancalaApplicationTests {
 		
 		//Tie case
 		mancalaGame.determineWinner();
-		Assert.assertEquals("Error in determineWinner!", "It is a tie!", mancalaGame.getWinner());
+		GameBoard gameBoard = mancalaGame.getCurrentGameBoard();
+		Assert.assertEquals("Error in determineWinner!", "It is a tie!", gameBoard.getWinner());
 		
 		//Player 1 won
-		List<Pile> piles = mancalaGame.getPiles();
-		piles.get(6).setNumPebbles(6);
+		mancalaGame.makeSingleMove(0);
 		mancalaGame.determineWinner();
-		Assert.assertEquals("Error in determineWinner!", "Player 1 won!", mancalaGame.getWinner());
+		GameBoard gameBoard2 = mancalaGame.getCurrentGameBoard();
+		Assert.assertEquals("Error in determineWinner!", "Player 1 won!", gameBoard2.getWinner());
 	}
 }

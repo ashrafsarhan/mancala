@@ -1,15 +1,12 @@
 package com.backbase.mancala.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import com.backbase.mancala.dto.GameBoard;
-import com.backbase.mancala.service.MancalaGame;
+import com.backbase.mancala.service.IBoardGame;
 
 /**
  * The Class GameController.
@@ -20,7 +17,7 @@ import com.backbase.mancala.service.MancalaGame;
 public class GameController {
 
 	@Autowired
-	private MancalaGame mancalaGame;
+	private IBoardGame mancalaGame;
 
 	/**
 	 * Start.
@@ -32,10 +29,7 @@ public class GameController {
 	@SendTo("/topic/game")
 	public GameBoard start() throws Exception {
 		mancalaGame.startNewGame();
-		List<Integer> piles = new ArrayList<>();
-		mancalaGame.getPiles().forEach(p -> piles.add(p.getNumPebbles()));
-		GameBoard gameBoard = new GameBoard(piles, mancalaGame.getGameStatus(),
-				mancalaGame.getWinner());
+		GameBoard gameBoard = mancalaGame.getCurrentGameBoard();
 		return gameBoard;
 	}
 	
@@ -53,10 +47,7 @@ public class GameController {
 		if(mancalaGame.isGameOver()){
 			mancalaGame.determineWinner();
 		}
-		List<Integer> piles = new ArrayList<>();
-		mancalaGame.getPiles().forEach(p -> piles.add(p.getNumPebbles()));
-		GameBoard gameBoard = new GameBoard(piles, mancalaGame.getGameStatus(),
-				mancalaGame.getWinner());
+		GameBoard gameBoard = mancalaGame.getCurrentGameBoard();
 		return gameBoard;
 	}
 

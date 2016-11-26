@@ -1,10 +1,13 @@
 package com.backbase.mancala.service;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.backbase.mancala.domain.Pile;
+import com.backbase.mancala.dto.GameBoard;
 
 /**
  * The Class MancalaGame.
@@ -12,7 +15,7 @@ import com.backbase.mancala.domain.Pile;
  * @author ashraf
  */
 @Service
-public class MancalaGame {
+public class MancalaGame implements IBoardGame {
 	/**
 	 * Description of instance variables player1: boolean that denotes whether
 	 * player1 or player2 is allowed to click on a certain pile on the board
@@ -25,26 +28,23 @@ public class MancalaGame {
 	private String winner;
 	private final static int PILE_COUNT = 6;
 
-	public String getGameStatus() {
-		return gameStatus;
-	}
-
-	public String getWinner() {
-		return winner;
-	}
-
-	public LinkedList<Pile> getPiles() {
-		return piles;
-	}
-
 	/**
 	 * Determines whether the game has reached its end, by using isSideEmpty to
 	 * check the state of each side of the board
 	 * 
 	 * @return boolean
 	 */
+	@Override
 	public boolean isGameOver() {
 		return isSideEmpty();
+	}
+	
+	@Override
+	public GameBoard getCurrentGameBoard() {
+		List<Integer> pilesCounts = new ArrayList<>();
+		piles.forEach(p -> pilesCounts.add(p.getNumPebbles()));
+		return new GameBoard(pilesCounts, gameStatus,
+				winner);
 	}
 
 	/**
@@ -118,6 +118,7 @@ public class MancalaGame {
 	 *
 	 * @param currentPile the current pile
 	 */
+	@Override
 	public void makeSingleMove(Integer currentPile) {
 		// sets isLandedMancala to false just in case
 		if (piles.get(currentPile).isEmpty()) {
@@ -248,6 +249,7 @@ public class MancalaGame {
 	 * Constructs a Board with a 12 piles and 2 mancalas in a linked list. The
 	 * 12 piles are populated with 4 pebbles each.
 	 */
+	@Override
 	public void startNewGame() {
 		piles = new LinkedList<Pile>(); // creates a new list of piles
 		// fills one side of piles LinkedList with 6 piles (4 pebbles each)
@@ -271,6 +273,7 @@ public class MancalaGame {
 		winner = "";
 	}
 
+	@Override
 	public void determineWinner() {
 		Integer player1Mancala = piles.get(6).getNumPebbles();
 		Integer player2Mancala = piles.get(13).getNumPebbles();
