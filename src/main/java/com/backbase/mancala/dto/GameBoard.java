@@ -3,8 +3,9 @@ package com.backbase.mancala.dto;
 import java.util.List;
 
 /**
- * @author ashraf
+ * The Class GameBoard.
  *
+ * @author ashraf
  */
 public class GameBoard {
 	

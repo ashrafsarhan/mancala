@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.backbase.mancala.service;
 
 import java.util.LinkedList;
@@ -10,8 +7,9 @@ import org.springframework.stereotype.Service;
 import com.backbase.mancala.domain.Pile;
 
 /**
- * @author ashraf
+ * The Class MancalaGame.
  *
+ * @author ashraf
  */
 @Service
 public class MancalaGame {
@@ -20,8 +18,8 @@ public class MancalaGame {
 	 * player1 or player2 is allowed to click on a certain pile on the board
 	 * turn1: boolean denoting whose turn it is
 	 */
-	public LinkedList<Pile> piles;
 	private boolean player1;
+	public LinkedList<Pile> piles;
 	private boolean isLandedMancala;
 	private String gameStatus;
 	private String winner;
@@ -50,7 +48,9 @@ public class MancalaGame {
 	}
 
 	/**
-	 * Determines whether a side of the board is empty
+	 * Determines whether a side of the board is empty.
+	 *
+	 * @return true, if is side empty
 	 */
 	public boolean isSideEmpty() {
 		// one of two cases needs to be true:
@@ -81,7 +81,9 @@ public class MancalaGame {
 	}
 
 	/**
-	 * checks if piles 0-5 are empty
+	 * checks if piles 0-5 are empty.
+	 *
+	 * @return true, if is bottom side empty
 	 */
 	public boolean isBottomSideEmpty() {
 		int counter = 0;
@@ -94,7 +96,9 @@ public class MancalaGame {
 	}
 
 	/**
-	 * checks if piles 7-12 are empty
+	 * checks if piles 7-12 are empty.
+	 *
+	 * @return true, if is top side empty
 	 */
 	public boolean isTopSideEmpty() {
 		int counter = 0;
@@ -109,11 +113,10 @@ public class MancalaGame {
 	/**
 	 * Takes a turn by distributing the contents of a chosen pile across the
 	 * other piles on the board. Traverses the linked list, popping from the
-	 * pile given as a parameter and pushing the popped pebble onto the currrent
+	 * pile given as a parameter and pushing the popped pebble onto the current
 	 * pile.
-	 * 
-	 * @param number
-	 *            of the pile that corresponds to its place in the linked list
+	 *
+	 * @param currentPile the current pile
 	 */
 	public void makeSingleMove(Integer currentPile) {
 		// sets isLandedMancala to false just in case
@@ -191,9 +194,10 @@ public class MancalaGame {
 
 	/**
 	 * Checks whether the pile that has been clicked on is actually on the
-	 * current players side
-	 * 
-	 * @param
+	 * current players side.
+	 *
+	 * @param nationWide the nation wide
+	 * @return true, if is on your side
 	 */
 	public boolean isOnYourSide(Integer nationWide) {
 		if (player1 == true && nationWide <= 5) {
@@ -209,9 +213,12 @@ public class MancalaGame {
 	 * During a move, checks whether the last pebble to be distributed landed in
 	 * an empty pile with pebbles across from it. Will call findAcross() method
 	 * in order to find the Pile to check.
+	 *
+	 * @param thisOne the this one
+	 * @return true, if is across full
 	 */
 	public boolean isAcrossFull(Integer thisOne) {
-		Integer pileAcross = 12 - thisOne; // BAM
+		Integer pileAcross = 12 - thisOne;
 		if (piles.get(pileAcross).isEmpty()) {
 			return false;
 		} else {
@@ -222,6 +229,8 @@ public class MancalaGame {
 	/**
 	 * Redistributes pebbles from a given pile to the mancala of the current
 	 * player.
+	 *
+	 * @param i the i
 	 */
 	public void allotPebbles(Integer i) {
 		while (!piles.get(12 - i).isEmpty()) {

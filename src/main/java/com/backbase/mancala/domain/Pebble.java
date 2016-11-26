@@ -4,8 +4,9 @@
 package com.backbase.mancala.domain;
 
 /**
- * @author ashraf
+ * The Class Pebble.
  *
+ * @author ashraf
  */
 public class Pebble {
     /**

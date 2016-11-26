@@ -12,8 +12,9 @@ import com.backbase.mancala.dto.GameBoard;
 import com.backbase.mancala.service.MancalaGame;
 
 /**
- * @author ashraf
+ * The Class GameController.
  *
+ * @author ashraf
  */
 @Controller
 public class GameController {
@@ -21,6 +22,12 @@ public class GameController {
 	@Autowired
 	private MancalaGame mancalaGame;
 
+	/**
+	 * Start.
+	 *
+	 * @return the game board
+	 * @throws Exception the exception
+	 */
 	@MessageMapping("/start")
 	@SendTo("/topic/game")
 	public GameBoard start() throws Exception {
@@ -32,6 +39,13 @@ public class GameController {
 		return gameBoard;
 	}
 	
+	/**
+	 * Move.
+	 *
+	 * @param currentPile the current pile
+	 * @return the game board
+	 * @throws Exception the exception
+	 */
 	@MessageMapping("/move")
 	@SendTo("/topic/game")
 	public GameBoard move(Integer currentPile) throws Exception {

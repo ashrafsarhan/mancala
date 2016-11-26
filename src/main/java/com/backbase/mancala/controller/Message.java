@@ -1,8 +1,9 @@
 package com.backbase.mancala.controller;
 
 /**
- * @author ashraf
+ * The Class Message.
  *
+ * @author ashraf
  */
 public class Message {
 	 private String content;

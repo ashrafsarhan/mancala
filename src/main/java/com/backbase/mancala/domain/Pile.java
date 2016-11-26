@@ -6,8 +6,9 @@ package com.backbase.mancala.domain;
 import java.util.Stack;
 
 /**
- * @author ashraf
+ * The Class Pile.
  *
+ * @author ashraf
  */
 public class Pile {
     /**
